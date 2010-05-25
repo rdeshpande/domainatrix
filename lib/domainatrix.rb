@@ -9,7 +9,8 @@ module Domainatrix
 
   def self.parse(url)
     @domain_parser ||= DomainParser.new("#{File.dirname(__FILE__)}/effective_tld_names.dat")
-    Url.new(@domain_parser.parse(url))
+    parsed = @domain_parser.parse(url)
+    Url.new(parsed) if parsed
   end
 
   def self.scan(text, &block)

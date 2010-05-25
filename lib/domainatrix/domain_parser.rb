@@ -1,7 +1,7 @@
 module Domainatrix
   class DomainParser
     include Addressable
-    
+
     attr_reader :public_suffixes
 
     def initialize(file_name)
@@ -25,11 +25,13 @@ module Domainatrix
 
     def parse(url)
       uri = URI.parse(url)
+      return unless uri && uri.host
       if uri.query
         path = "#{uri.path}?#{uri.query}"
       else
         path = uri.path
       end
+
       parse_domains_from_host(uri.host).merge({
         :scheme => uri.scheme,
         :host   => uri.host,
