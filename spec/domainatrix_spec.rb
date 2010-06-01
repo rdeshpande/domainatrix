@@ -54,7 +54,7 @@ describe Domainatrix do
       TEXT
 
       urls = Domainatrix.scan(input).map {|u| u.url}
-      urls.should == %w(http://tobtr.com/s/821921 http://www.google.com http://fora.tv/v/c8637 http://example.com http://foo.com http://baz.com)
+      urls.should == %w(http://tobtr.com/s/821921 http://www.google.com/ http://fora.tv/v/c8637 http://example.com/ http://foo.com/ http://baz.com/)
     end
   end
 end

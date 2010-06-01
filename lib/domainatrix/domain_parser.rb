@@ -1,7 +1,5 @@
 module Domainatrix
   class DomainParser
-    include Addressable
-
     attr_reader :public_suffixes
 
     def initialize(file_name)
@@ -24,8 +22,9 @@ module Domainatrix
     end
 
     def parse(url)
-      uri = URI.parse(url)
+      uri = Addressable::URI.parse(url)
       return unless uri && uri.host
+      url = uri.normalize.to_s
       if uri.query
         path = "#{uri.path}?#{uri.query}"
       else
