@@ -50,13 +50,13 @@ module Domainatrix
 
         sub_parts = sub_hash[part]
         sub_hash = sub_parts
-        if sub_parts.has_key? "*"
+        if sub_parts && sub_parts.has_key?("*")
           public_suffix << part
           public_suffix << parts[i+1]
           domain = parts[i+2]
           subdomains = parts.slice(i+3, parts.size)
           break
-        elsif sub_parts.empty? || !sub_parts.has_key?(parts[i+1])
+        elsif sub_parts.nil? || sub_parts.empty? || !sub_parts.has_key?(parts[i+1])
           public_suffix << part
           domain = parts[i+1]
           subdomains = parts.slice(i+2, parts.size)

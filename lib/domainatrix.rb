@@ -30,7 +30,7 @@ module Domainatrix
     end
 
     urls = candidate_urls.map do |url|
-      parse(url) rescue nil
+      parse(url)
     end.compact
     urls.map!(&block) if block
     urls

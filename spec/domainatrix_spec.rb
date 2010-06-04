@@ -23,6 +23,13 @@ describe Domainatrix do
       url.canonical.should == "org.craigslist.losangeles/sfv/clt/1551463643.html"
     end
 
+    it "handles shouting" do
+      input = "TONIGHT!!  @chelseavperetti @toddglass @dougbenson @realjeffreyross ME and Tig Notaro   http://WWW.OPCCEVENTS.ORG/"
+      url = Domainatrix.scan(input).first
+      url.should_not be_nil
+      url.url.should == "http://www.opccevents.org/"
+    end
+
     it "finds multiple urls in a string" do
       input = <<-TEXT
       http://google.com
