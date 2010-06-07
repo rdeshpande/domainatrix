@@ -15,6 +15,7 @@ module Domainatrix
   end
 
   def self.scan(text, &block)
+    return [] unless text
     @schemes ||= %w(http https)
     all_trailing_clutter = /[.,:);]+$/
     clutter_without_parens = /[.,:);]+$/
