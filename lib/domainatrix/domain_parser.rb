@@ -22,7 +22,7 @@ module Domainatrix
     end
 
     def parse(url)
-      uri = Addressable::URI.parse(url)
+      uri = URI.parse(URI.encode(url))
       return unless uri && uri.host
       url = uri.normalize.to_s
       if uri.query

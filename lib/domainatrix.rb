@@ -1,6 +1,5 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__)) unless $LOAD_PATH.include?(File.dirname(__FILE__))
 
-require 'addressable/uri'
 require 'domainatrix/domain_parser'
 require 'domainatrix/url'
 require 'uri' # addressable doesn't provide a scanner/extractor
@@ -33,7 +32,7 @@ module Domainatrix
     urls = candidate_urls.map do |url|
       begin
         parse(url)
-      rescue Addressable::URI::InvalidURIError
+      rescue URI::InvalidURIError
       end
     end.compact
     urls.map!(&block) if block
